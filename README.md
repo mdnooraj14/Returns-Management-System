@@ -443,6 +443,7 @@ Additional project documentation:
 - [Entity Relationship Diagram](docs/ERD.md)
 - [Data Dictionary](docs/data_dictionary.md)
 - [AI Usage and Development Disclosure](docs/AI_USAGE.md)
+- [AI Prompt History](docs/AI_PROMPT_HISTORY.md)
 
 ## 15. License and Usage
 
