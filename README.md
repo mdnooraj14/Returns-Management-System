@@ -444,7 +444,7 @@ Additional project documentation:
 - [Data Dictionary](docs/data_dictionary.md)
 - [AI Usage and Development Disclosure](docs/AI_USAGE.md)
 - [AI Prompt History](docs/AI_PROMPT_HISTORY.md)
-
+- [AI Prompt Screenshots](docs/AI_PROMPT_SCREENSHOTS/)
 ## 15. License and Usage
 
 This project was developed as part of the YottaFlex AI Recruitment Drive candidate project submission.
