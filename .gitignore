@@ -1,0 +1,27 @@
+# Virtual environments
+.venv/
+venv/
+
+# Python caches and tooling
+__pycache__/
+.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Generated datasets: the full dataset is large (~100 MB); output/starter/ stays tracked
+output/full/
+output/repro/
+output/_repro_*/
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db

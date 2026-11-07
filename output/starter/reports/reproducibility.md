@@ -1,0 +1,76 @@
+# Reproducibility (REPRODUCIBLE)
+
+Seed 20261022, scale 0.1. Run A and run B are separate processes with different `PYTHONHASHSEED` values.
+
+| Comparison | Row counts equal | Files compared | Identical | Differing |
+|---|---|---|---|---|
+| run A vs run B | True | 40 | 40 | 0 |
+| run A vs published dataset | True | 40 | 40 | 0 |
+
+Control: a different seed changes the output: **True**.
+
+## Row counts
+
+| Table | Rows |
+|---|---|
+| customer | 1200 |
+| inspection | 545 |
+| inventory_disposition | 545 |
+| inventory_movement | 596 |
+| order_line | 7138 |
+| orders | 3000 |
+| product | 600 |
+| refund | 340 |
+| refund_line | 469 |
+| return_authorization | 434 |
+| return_line | 800 |
+| return_policy | 9 |
+| return_request | 500 |
+| return_shipment | 459 |
+| shipment_line | 657 |
+| state_event | 4852 |
+
+## SHA-256 (run A)
+
+| File | SHA-256 |
+|---|---|
+| data/customer.csv | `da6a8e19371d3248296c68ca7e7c718306e2ece67642d7c7ac7cd416549e36c9` |
+| data/inspection.csv | `19d016a0071353b116c312d9fecab938fe14d42cf193715f857b07ea162d110e` |
+| data/inventory_disposition.csv | `c49871ccaad2cbe47b1d530e8fde36d9b3f1388accf325914a7ef84f966cd261` |
+| data/inventory_movement.csv | `123708bd36a91bfd87a59950715da4756f3eda4f666f0bf544037e92e85e2e9e` |
+| data/order_line.csv | `cc58ce88e8dd9e461f471b6661fbf4d536b73e49f90aa9a0b08f59fb598b5843` |
+| data/orders.csv | `9b785ed67dfd493c5417cf46b9430520ebd4b2c2b39b4eae4dbb8d78fd829c77` |
+| data/product.csv | `67201ccaf1a694dcb6b3397f865416571785b1257acc3febfcbb01556c78ea48` |
+| data/refund.csv | `ddbfa87071ea26a4c7100781da1b437c44ccfd31e1c214561418e2b902025464` |
+| data/refund_line.csv | `5baecd2b4f8abbd2f51357b953031535fcb81014724e499685a40a21b8f76f0b` |
+| data/return_authorization.csv | `4c1b62d5ce3153d95d7e157fbe337b6b29d57eb78441bd8c26b17a44b48d62ae` |
+| data/return_line.csv | `f99b969bd662d5680509d2a67fe98372e4f06b4fa0c658cd4c94c8a311bd0553` |
+| data/return_policy.csv | `3ede247eda0ad0932ff6921edc2a1f0c5389b40dddfc3434c1f0f2a219862bc8` |
+| data/return_request.csv | `1ee2506634947b8b5beaed50be41135f62a72388eaf95ea2e594f2555c200d3b` |
+| data/return_shipment.csv | `ad309f53b25b306d4c487f404e46f8fa01724dbfd7f37be46c95789be2e9387d` |
+| data/shipment_line.csv | `8b2e69db0d24a40bee68931f1a52731247d7e398c6fda31b0708989014ff0392` |
+| data/state_event.csv | `097204182445bd865113994c4340b1bb960b5169794f368ddeb50f7dba547d31` |
+| ground_truth/anomalies.csv | `dbe9d2b434328652bfff5c6af93ef14460eb92b638b4be92330ed2c68bb10e6e` |
+| ground_truth/anomalies.json | `8d8daa9e1c27335720cc46d76d0f9344317a6265f1f7dbc801828e54c2889687` |
+| ground_truth/decisions.csv | `a441b6e29acfa5c192bc6b93fa4dd48d5083194cab4a911a0e8b163ab843afd3` |
+| ground_truth/decisions.json | `cdcf5077235f66b91f0bf63a039b26f6b6fa1fa20e74b3f18af34068151ed4c5` |
+| ground_truth/scenario_labels.csv | `d378b3f8b58a520aa7a720d8545083bb746c7b04b485cea94b949a5d39be0965` |
+| ground_truth/scenario_labels.json | `81a2e9a9a868ea0874bd32328962d94fc0148643d421a778b150e0abb7f473f4` |
+| json/customer.json | `4550b9270a6fc1ebf2c8cf622c79280faf6eef72d52471d78840cb1e6e3bd825` |
+| json/inspection.json | `2533af8eed689d723443b29711efd645773c6734b67d087f176f9fd1b5486702` |
+| json/inventory_disposition.json | `336c99927a685942b7feacdd1cae74bfcd1053dc282c9af4c1077cc91d7d1023` |
+| json/inventory_movement.json | `2e3802280e6082ec2570cde24c49e1c36f12aad0851de67aa3a4149706dfa384` |
+| json/order_line.json | `8015386d479c8b3cb3f1a6cbcd48b1723af0b6c12be52e51ba2ed967596fbe90` |
+| json/orders.json | `d0cf0326129fb2c2994e77f7f8d57eea42cf079cad642d8dae798e157806b148` |
+| json/product.json | `bcff05f529b2f29d94d979980e348e3802807c580fb8650a101d36a633cd030a` |
+| json/refund.json | `df38e43b4f56da8c7c9a493adf986e7ae2a622015b7452c02b1e43db1558b551` |
+| json/refund_line.json | `a0951889c8ee97c557a6a673d163a1ec0bf6949c2955b30112f76ce78ef2efa7` |
+| json/return_authorization.json | `412892e7ad8a15095f1245e0ad779bf6d8e8d6fed2b78c323fcae4d718dca3aa` |
+| json/return_line.json | `e9dfb2dd17f86136b7fa549874e963e2c7d50f646b68a162cccf83e89125cb44` |
+| json/return_policy.json | `5ae377147dc4751841a47f2b50e7a3d8a39c9d187e8e05aab35447085cd54d79` |
+| json/return_request.json | `5de6c420225e60c450747502f176d8d64380e59eac8fd8adae8f3715fce3539d` |
+| json/return_shipment.json | `7d18d38951c694c449092b187d9864df1416476f86b74f2f23f6c187f3ce2e13` |
+| json/shipment_line.json | `c0650d07f0b1672e6074e96be125da7d81d94b2f2a2e34bea3219dc243828d72` |
+| json/state_event.json | `6facba155e074b8fa47d9442e209fd98122344f69a586f317c0dbe639abb12b3` |
+| sql/schema.sql | `29de48e3d76c692005b62b6356045b760a8e787cffc62d6e89867cf564217c1a` |
+| sql/seed.sql | `4a0fea899082b50de4905c7296ef419ad5a3a7702f1cd4aeec2d3518b80564cb` |

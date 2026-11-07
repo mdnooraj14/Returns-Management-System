@@ -1,0 +1,3335 @@
+{
+  "summary": {
+    "dataset": "starter",
+    "snapshot_date": "2026-10-22",
+    "row_counts": {
+      "customer": 1200,
+      "product": 600,
+      "return_policy": 9,
+      "orders": 3000,
+      "order_line": 7138,
+      "return_request": 500,
+      "return_line": 800,
+      "return_authorization": 434,
+      "return_shipment": 459,
+      "shipment_line": 657,
+      "inspection": 545,
+      "inventory_disposition": 545,
+      "inventory_movement": 596,
+      "refund": 340,
+      "refund_line": 469,
+      "state_event": 4852
+    },
+    "layers": {
+      "structural": {
+        "checks": 317,
+        "passed": 317
+      },
+      "invariant": {
+        "checks": 36,
+        "passed": 36
+      },
+      "business": {
+        "checks": 6,
+        "passed": 6
+      }
+    },
+    "total_checks": 359,
+    "passed": 359,
+    "failed": [],
+    "overall": "PASS"
+  },
+  "checks": [
+    {
+      "id": "S00_STRICT_SCHEMA_LOAD",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "all CSVs load into the constrained schema.sql (PK/FK/CHECK enforced)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_customer",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "customer.customer_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_customer_customer_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "customer.customer_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_customer_customer_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "customer.customer_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_customer_first_name",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "customer.first_name not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_customer_last_name",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "customer.last_name not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_customer_email",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "customer.email not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "UQ_customer_email",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "customer.email unique",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_customer_state",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "customer.state not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_customer_state",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "customer.state in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_customer_loyalty_tier",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "customer.loyalty_tier not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_customer_loyalty_tier",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "customer.loyalty_tier in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_customer_created_date",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "customer.created_date not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_customer_created_date",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "customer.created_date ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_product",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "product.product_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_product_product_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "product.product_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_product_product_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "product.product_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_product_name",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "product.name not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_product_category",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "product.category not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_product_category",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "product.category in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_product_unit_price_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "product.unit_price_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_product_unit_price_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "product.unit_price_cents integer >= 1",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_product_unit_cost_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "product.unit_cost_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_product_unit_cost_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "product.unit_cost_cents integer >= 1",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_return_policy",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.policy_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "UQ_return_policy_category_effective_from",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy unique (category, effective_from)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_policy_policy_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.policy_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_return_policy_policy_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.policy_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_policy_category",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.category not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_return_policy_category",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.category in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_policy_window_days",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.window_days not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_return_policy_window_days",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.window_days integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_policy_defect_extension_days",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.defect_extension_days not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_return_policy_defect_extension_days",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.defect_extension_days integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_policy_final_sale",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.final_sale not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "BL_return_policy_final_sale",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.final_sale is 0/1",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_policy_requires_unopened",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.requires_unopened not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "BL_return_policy_requires_unopened",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.requires_unopened is 0/1",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_policy_restocking_fee_bps_opened",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.restocking_fee_bps_opened not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_return_policy_restocking_fee_bps_opened",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.restocking_fee_bps_opened integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_policy_effective_from",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.effective_from not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_return_policy_effective_from",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.effective_from ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_return_policy_effective_to",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_policy.effective_to ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_orders",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.order_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_orders_order_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.order_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_orders_order_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.order_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_orders_customer_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.customer_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_orders_customer_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.customer_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_orders_customer_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.customer_id -> customer.customer_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_orders_order_date",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.order_date not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_orders_order_date",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.order_date ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_orders_status",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.status not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_orders_status",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.status in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_orders_delivery_date",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.delivery_date ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_orders_ship_state",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.ship_state not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_orders_ship_state",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.ship_state in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_orders_payment_method",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.payment_method not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_orders_payment_method",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.payment_method in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_orders_coupon_code",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.coupon_code in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_orders_subtotal_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.subtotal_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_orders_subtotal_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.subtotal_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_orders_discount_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.discount_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_orders_discount_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.discount_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_orders_shipping_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.shipping_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_orders_shipping_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.shipping_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_orders_tax_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.tax_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_orders_tax_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.tax_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_orders_total_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.total_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_orders_total_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "orders.total_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_order_line",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.order_line_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "UQ_order_line_order_id_line_no",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line unique (order_id, line_no)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_order_line_order_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.order_line_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_order_line_order_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.order_line_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_order_line_order_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.order_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_order_line_order_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.order_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_order_line_order_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.order_id -> orders.order_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_order_line_line_no",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.line_no not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_order_line_line_no",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.line_no integer >= 1",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_order_line_product_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.product_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_order_line_product_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.product_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_order_line_product_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.product_id -> product.product_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_order_line_category",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.category not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_order_line_category",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.category in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_order_line_quantity",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.quantity not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_order_line_quantity",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.quantity integer >= 1",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_order_line_unit_price_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.unit_price_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_order_line_unit_price_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.unit_price_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_order_line_gross_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.gross_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_order_line_gross_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.gross_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_order_line_discount_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.discount_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_order_line_discount_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.discount_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_order_line_net_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.net_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_order_line_net_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.net_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_order_line_tax_rate_bps",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.tax_rate_bps not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_order_line_tax_rate_bps",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.tax_rate_bps integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_order_line_tax_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.tax_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_order_line_tax_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.tax_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_order_line_paid_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.paid_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_order_line_paid_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "order_line.paid_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_return_request",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.return_request_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_request_return_request_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.return_request_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_return_request_return_request_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.return_request_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_request_order_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.order_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_return_request_order_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.order_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_return_request_order_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.order_id -> orders.order_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_request_customer_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.customer_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_return_request_customer_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.customer_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_return_request_customer_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.customer_id -> customer.customer_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_request_requested_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.requested_at not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_return_request_requested_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.requested_at ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_request_channel",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.channel not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_return_request_channel",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.channel in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_request_resolution_requested",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.resolution_requested not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_return_request_resolution_requested",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.resolution_requested in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_return_request_refund_method",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.refund_method in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_request_status",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.status not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_return_request_status",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_request.status in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_return_line",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.return_line_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "UQ_return_line_return_request_id_line_no",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line unique (return_request_id, line_no)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "UQ_return_line_return_request_id_order_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line unique (return_request_id, order_line_id)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_line_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.return_line_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_return_line_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.return_line_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_line_return_request_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.return_request_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_return_line_return_request_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.return_request_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_return_line_return_request_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.return_request_id -> return_request.return_request_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_line_line_no",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.line_no not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_return_line_line_no",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.line_no integer >= 1",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_line_order_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.order_line_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_return_line_order_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.order_line_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_return_line_order_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.order_line_id -> order_line.order_line_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_line_qty_requested",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.qty_requested not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_return_line_qty_requested",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.qty_requested integer >= 1",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_line_reason_code",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.reason_code not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_return_line_reason_code",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.reason_code in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_line_condition_declared",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.condition_declared not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_return_line_condition_declared",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.condition_declared in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_line_line_decision",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.line_decision not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_return_line_line_decision",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.line_decision in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_return_line_decision_reason",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.decision_reason in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_return_line_qty_approved",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.qty_approved integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_return_line_override_code",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.override_code in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_return_line_decided_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_line.decided_at ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_return_authorization",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_authorization.authorization_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_authorization_authorization_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_authorization.authorization_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_return_authorization_authorization_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_authorization.authorization_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_authorization_return_request_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_authorization.return_request_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "UQ_return_authorization_return_request_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_authorization.return_request_id unique",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_return_authorization_return_request_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_authorization.return_request_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_return_authorization_return_request_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_authorization.return_request_id -> return_request.return_request_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_authorization_decision",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_authorization.decision not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_return_authorization_decision",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_authorization.decision in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_authorization_decided_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_authorization.decided_at not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_return_authorization_decided_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_authorization.decided_at ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_authorization_expires_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_authorization.expires_at not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_return_authorization_expires_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_authorization.expires_at ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_authorization_authorized_by",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_authorization.authorized_by not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_return_shipment",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.shipment_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_shipment_shipment_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.shipment_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_return_shipment_shipment_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.shipment_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_shipment_authorization_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.authorization_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_return_shipment_authorization_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.authorization_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_return_shipment_authorization_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.authorization_id -> return_authorization.authorization_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_shipment_carrier",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.carrier not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_return_shipment_carrier",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.carrier in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_shipment_tracking_number",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.tracking_number not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "UQ_return_shipment_tracking_number",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.tracking_number unique",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_shipment_label_issued_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.label_issued_at not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_return_shipment_label_issued_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.label_issued_at ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_return_shipment_shipped_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.shipped_at ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_return_shipment_received_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.received_at ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_return_shipment_status",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.status not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_return_shipment_status",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "return_shipment.status in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_shipment_line",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "shipment_line.shipment_line_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "UQ_shipment_line_shipment_id_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "shipment_line unique (shipment_id, return_line_id)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_shipment_line_shipment_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "shipment_line.shipment_line_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_shipment_line_shipment_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "shipment_line.shipment_line_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_shipment_line_shipment_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "shipment_line.shipment_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_shipment_line_shipment_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "shipment_line.shipment_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_shipment_line_shipment_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "shipment_line.shipment_id -> return_shipment.shipment_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_shipment_line_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "shipment_line.return_line_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_shipment_line_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "shipment_line.return_line_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_shipment_line_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "shipment_line.return_line_id -> return_line.return_line_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_shipment_line_qty_expected",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "shipment_line.qty_expected not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_shipment_line_qty_expected",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "shipment_line.qty_expected integer >= 1",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_shipment_line_qty_shipped",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "shipment_line.qty_shipped integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_shipment_line_qty_received",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "shipment_line.qty_received integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_inspection",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.inspection_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inspection_inspection_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.inspection_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_inspection_inspection_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.inspection_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inspection_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.return_line_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "UQ_inspection_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.return_line_id unique",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_inspection_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.return_line_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_inspection_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.return_line_id -> return_line.return_line_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inspection_shipment_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.shipment_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_inspection_shipment_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.shipment_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_inspection_shipment_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.shipment_id -> return_shipment.shipment_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inspection_inspected_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.inspected_at not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_inspection_inspected_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.inspected_at ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inspection_inspector_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.inspector_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inspection_qty_inspected",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.qty_inspected not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_inspection_qty_inspected",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.qty_inspected integer >= 1",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inspection_condition_found",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.condition_found not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_inspection_condition_found",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.condition_found in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inspection_grade",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.grade not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_inspection_grade",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.grade in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inspection_fault_party",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.fault_party not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_inspection_fault_party",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.fault_party in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inspection_refund_eligible",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.refund_eligible not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "BL_inspection_refund_eligible",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inspection.refund_eligible is 0/1",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_inventory_disposition",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.disposition_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_disposition_disposition_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.disposition_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_inventory_disposition_disposition_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.disposition_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_disposition_inspection_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.inspection_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "UQ_inventory_disposition_inspection_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.inspection_id unique",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_inventory_disposition_inspection_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.inspection_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_inventory_disposition_inspection_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.inspection_id -> inspection.inspection_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_disposition_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.return_line_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_inventory_disposition_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.return_line_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_inventory_disposition_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.return_line_id -> return_line.return_line_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_disposition_product_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.product_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_inventory_disposition_product_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.product_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_inventory_disposition_product_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.product_id -> product.product_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_disposition_disposition",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.disposition not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_inventory_disposition_disposition",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.disposition in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_disposition_qty",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.qty not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_inventory_disposition_qty",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.qty integer >= 1",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_disposition_destination_location",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.destination_location not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_inventory_disposition_destination_location",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.destination_location in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_disposition_decided_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.decided_at not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_inventory_disposition_decided_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.decided_at ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_disposition_est_recovery_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.est_recovery_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_inventory_disposition_est_recovery_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_disposition.est_recovery_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_inventory_movement",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.movement_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_movement_movement_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.movement_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_inventory_movement_movement_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.movement_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_inventory_movement_disposition_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.disposition_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_inventory_movement_disposition_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.disposition_id -> inventory_disposition.disposition_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_movement_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.return_line_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_inventory_movement_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.return_line_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_inventory_movement_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.return_line_id -> return_line.return_line_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_movement_product_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.product_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_inventory_movement_product_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.product_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_inventory_movement_product_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.product_id -> product.product_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_movement_movement_type",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.movement_type not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_inventory_movement_movement_type",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.movement_type in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_movement_location",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.location not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_inventory_movement_location",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.location in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_movement_qty",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.qty not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_inventory_movement_qty",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.qty integer >= 1",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_movement_sellable_qty_delta",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.sellable_qty_delta not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_inventory_movement_sellable_qty_delta",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.sellable_qty_delta integer",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_inventory_movement_posted_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.posted_at not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_inventory_movement_posted_at",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "inventory_movement.posted_at ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_refund",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.refund_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "UQ_refund_return_request_id_attempt_no",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund unique (return_request_id, attempt_no)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_refund_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.refund_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_refund_refund_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.refund_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_return_request_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.return_request_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_refund_return_request_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.return_request_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_refund_return_request_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.return_request_id -> return_request.return_request_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_idempotency_key",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.idempotency_key not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_attempt_no",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.attempt_no not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_refund_attempt_no",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.attempt_no integer >= 1",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_method",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.method not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_refund_method",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.method in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_status",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.status not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_refund_status",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.status in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_refund_date",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.refund_date not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT_refund_refund_date",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.refund_date ISO date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_refund_amount_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.refund_amount_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_refund_refund_amount_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.refund_amount_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_paid_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.paid_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_refund_paid_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.paid_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_return_shipping_fee_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.return_shipping_fee_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_refund_return_shipping_fee_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.return_shipping_fee_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_currency",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.currency not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_refund_currency",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund.currency in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_refund_line",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.refund_line_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "UQ_refund_line_refund_id_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line unique (refund_id, return_line_id)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_line_refund_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.refund_line_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_refund_line_refund_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.refund_line_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_line_refund_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.refund_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_refund_line_refund_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.refund_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_refund_line_refund_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.refund_id -> refund.refund_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_line_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.return_line_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_refund_line_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.return_line_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_refund_line_return_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.return_line_id -> return_line.return_line_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_line_order_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.order_line_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_refund_line_order_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.order_line_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK_refund_line_order_line_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.order_line_id -> order_line.order_line_id",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_line_qty_refunded",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.qty_refunded not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_refund_line_qty_refunded",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.qty_refunded integer >= 1",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_line_gross_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.gross_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_refund_line_gross_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.gross_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_line_discount_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.discount_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_refund_line_discount_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.discount_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_line_tax_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.tax_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_refund_line_tax_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.tax_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_line_paid_share_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.paid_share_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_refund_line_paid_share_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.paid_share_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_line_restocking_fee_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.restocking_fee_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_refund_line_restocking_fee_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.restocking_fee_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_line_condition_deduction_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.condition_deduction_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_refund_line_condition_deduction_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.condition_deduction_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_refund_line_refund_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.refund_cents not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TY_refund_line_refund_cents",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "refund_line.refund_cents integer >= 0",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "PK_state_event",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "state_event.event_id unique and not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_state_event_event_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "state_event.event_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID_state_event_event_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "state_event.event_id matches ID format",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_state_event_entity_type",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "state_event.entity_type not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_state_event_entity_type",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "state_event.entity_type in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_state_event_entity_id",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "state_event.entity_id not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_state_event_to_state",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "state_event.to_state not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_state_event_event_ts",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "state_event.event_ts not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "TS_state_event_event_ts",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "state_event.event_ts ISO timestamp",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "NN_state_event_actor",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "state_event.actor not null",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN_state_event_actor",
+      "layer": "structural",
+      "expect": "zero",
+      "desc": "state_event.actor in allowed enum",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "D01",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "order delivered before it was placed",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "D02",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "delivery_date presence must match order status",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "D03",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "return requested before delivery, or for an undelivered order, or after snapshot",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "D04",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "line decision date before request, or PENDING/decided_at mismatch",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "D05",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "authorization before request or expiry != decided_at + 21 days",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "D06",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "shipment dates out of order (label <= shipped <= received)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "D07",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "inspection before parcel received",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "D08",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "disposition decided before inspection",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "D09",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "refund paid before an inspection of its request",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "D10",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "non-restock movement posted before the inspection",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "D11",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "state event after the snapshot date",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "D12",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "customer created after first order",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "A01",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "order line arithmetic (gross, net, paid, tax)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "A02",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "order header totals must equal sum of lines (and have lines)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "A03",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "order total and shipping rule",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "A04",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "refund_line paid_share != gross - discount + tax",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "A05",
+      "layer": "business",
+      "expect": "gt:REFUND_EXCEEDS_PAID",
+      "desc": "refund_line refund != paid_share - restocking fee - condition deduction (entity = refund)",
+      "violations": 8,
+      "expected_in_ground_truth": 8,
+      "true_positive": 8,
+      "false_positive": 0,
+      "false_negative": 0,
+      "status": "PASS",
+      "sample": [
+        "REF-2026-000037",
+        "REF-2026-000071",
+        "REF-2026-000132",
+        "REF-2026-000136",
+        "REF-2026-000177"
+      ]
+    },
+    {
+      "id": "A06",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "refund header (attempt 1) != sum of lines - return shipping fee",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "A07",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "paid_cents must equal amount for ISSUED and 0 for BLOCKED_DUPLICATE; replays carry no lines",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "A08",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "fully returned order line: refunded gross/discount/tax must equal the order line (discount and tax reconciliation)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "A09",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "refund_line order_line must match its return_line; return request customer must match order customer",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "A10",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "quantity chain: expected <= approved, shipped <= expected, received <= shipped, inspected = received, disposition qty = inspected",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "B01",
+      "layer": "business",
+      "expect": "gt:QTY_EXCEEDS_PURCHASED",
+      "desc": "approved return quantity exceeds purchased quantity",
+      "violations": 8,
+      "expected_in_ground_truth": 8,
+      "true_positive": 8,
+      "false_positive": 0,
+      "false_negative": 0,
+      "status": "PASS",
+      "sample": [
+        "RMAL-RMA-2026-000007-01",
+        "RMAL-RMA-2026-000012-01",
+        "RMAL-RMA-2026-000028-01",
+        "RMAL-RMA-2026-000231-01",
+        "RMAL-RMA-2026-000262-01"
+      ]
+    },
+    {
+      "id": "B02",
+      "layer": "business",
+      "expect": "gt:REFUND_EXCEEDS_PAID",
+      "desc": "refund exceeds paid share of a line, or cumulative refunds exceed the amount paid for the order line",
+      "violations": 8,
+      "expected_in_ground_truth": 8,
+      "true_positive": 8,
+      "false_positive": 0,
+      "false_negative": 0,
+      "status": "PASS",
+      "sample": [
+        "REF-2026-000037",
+        "REF-2026-000071",
+        "REF-2026-000132",
+        "REF-2026-000136",
+        "REF-2026-000177"
+      ]
+    },
+    {
+      "id": "B03",
+      "layer": "business",
+      "expect": "gt:RESTOCK_BEFORE_INSPECTION",
+      "desc": "sellable restock posted before the inspection of that line",
+      "violations": 8,
+      "expected_in_ground_truth": 8,
+      "true_positive": 8,
+      "false_positive": 0,
+      "false_negative": 0,
+      "status": "PASS",
+      "sample": [
+        "DISP-2026-000003",
+        "DISP-2026-000009",
+        "DISP-2026-000127",
+        "DISP-2026-000329",
+        "DISP-2026-000406"
+      ]
+    },
+    {
+      "id": "B04",
+      "layer": "business",
+      "expect": "gt:LATE_NO_OVERRIDE",
+      "desc": "approved after the policy window (version in force at delivery) with no override",
+      "violations": 8,
+      "expected_in_ground_truth": 8,
+      "true_positive": 8,
+      "false_positive": 0,
+      "false_negative": 0,
+      "status": "PASS",
+      "sample": [
+        "RMAL-RMA-2026-000066-01",
+        "RMAL-RMA-2026-000087-01",
+        "RMAL-RMA-2026-000192-01",
+        "RMAL-RMA-2026-000264-01",
+        "RMAL-RMA-2026-000382-01"
+      ]
+    },
+    {
+      "id": "B05",
+      "layer": "business",
+      "expect": "gt:DUPLICATE_REFUND",
+      "desc": "second ISSUED payout for the same idempotency key",
+      "violations": 8,
+      "expected_in_ground_truth": 8,
+      "true_positive": 8,
+      "false_positive": 0,
+      "false_negative": 0,
+      "status": "PASS",
+      "sample": [
+        "REF-2026-000035",
+        "REF-2026-000150",
+        "REF-2026-000164",
+        "REF-2026-000178",
+        "REF-2026-000190"
+      ]
+    },
+    {
+      "id": "B06",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "override approvals must satisfy the goodwill rule (GOLD <= 21 days late, SILVER <= 10) and carry a code",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "B07",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "approved quantity in a final-sale category, or opened beauty without seller fault",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "B08",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "decision fields inconsistent (REJECTED needs qty 0; APPROVED needs qty>=1 and reason; authorization iff approved line)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "B09",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "grade/fault/eligibility/disposition must follow inspection rules",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "B10",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "disposition must follow grade (A restock, B refurbish, C refurbish if cost>=1500 else scrap, D scrap, W/S quarantine); location follows disposition",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "B11",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "inventory movement must be controlled by its disposition (type, location, qty, sellable delta)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "B12",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "refund only after inspection, only for eligible lines, never for exchange requests",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "B13",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "return shipping fee rule (799 flat, waived for GOLD or any seller-fault line, capped at merchandise total)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "L01",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "state transition not allowed by the lifecycle",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "L02",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "from_state must equal the previous to_state of the same entity (history is continuous and ordered)",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "L03",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "current status column must equal the last event",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "L04",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "event points to a missing parent, or an entity has no initial event",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "L05",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "lifecycle vs facts: AUTHORIZED+ needs an authorization; RECEIVED+ needs received parcels; INSPECTED+ needs inspections; REFUNDED needs an ISSUED refund",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "U01",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "one return request per (order line, request) and one authorization / inspection per owner",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "P01",
+      "layer": "invariant",
+      "expect": "zero",
+      "desc": "policy versions of one category must not overlap",
+      "violations": 0,
+      "status": "PASS",
+      "sample": []
+    }
+  ]
+}

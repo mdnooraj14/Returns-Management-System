@@ -1,0 +1,204 @@
+{
+  "operational": {
+    "orders": 3000,
+    "delivered_orders": 2930,
+    "return_requests": 500,
+    "return_lines": 800,
+    "request_rate_per_delivered_order": 0.1706,
+    "line_return_rate": 0.1121,
+    "line_approval_rate": 0.8233,
+    "approval_rate_by_category": {
+      "APPAREL": 0.8947,
+      "BEAUTY": 0.7231,
+      "CLEARANCE": 0.0,
+      "ELECTRONICS": 0.92,
+      "FOOTWEAR": 0.9417,
+      "GIFT_CARDS": 0.0,
+      "HOME": 0.9478,
+      "PERISHABLES": 0.0
+    },
+    "decision_reasons": {
+      "ELIGIBLE": 650,
+      "FINAL_SALE_CATEGORY": 69,
+      "LATE_REQUEST": 59,
+      "OPENED_NOT_RETURNABLE": 13,
+      "LATE_OVERRIDE": 7
+    },
+    "override_approvals": 7,
+    "request_status": {
+      "CLOSED": 373,
+      "REJECTED": 64,
+      "EXPIRED": 44,
+      "AUTHORIZED": 8,
+      "SHIPPED": 6,
+      "SUBMITTED": 2,
+      "CLAIM_OPENED": 1,
+      "REFUNDED": 1,
+      "INSPECTED": 1
+    },
+    "shipment_status": {
+      "RECEIVED": 387,
+      "VOIDED": 51,
+      "LABEL_ISSUED": 8,
+      "LOST": 7,
+      "IN_TRANSIT": 6
+    },
+    "exchange_requests": 51,
+    "partial_approvals": 55,
+    "unused_labels_voided": 51,
+    "carrier_lost": 7,
+    "cycle_days": {
+      "request_to_decision": {
+        "n": 434,
+        "mean": 0.61,
+        "median": 0.0,
+        "p90": 2.0
+      },
+      "decision_to_ship": {
+        "n": 400,
+        "mean": 6.58,
+        "median": 7.0,
+        "p90": 11.0
+      },
+      "ship_to_receive": {
+        "n": 387,
+        "mean": 5.14,
+        "median": 5.0,
+        "p90": 8.0
+      },
+      "receive_to_inspect": {
+        "n": 545,
+        "mean": 1.15,
+        "median": 1.0,
+        "p90": 2.6000000000000227
+      },
+      "inspect_to_refund": {
+        "n": 326,
+        "mean": 2.0,
+        "median": 2.0,
+        "p90": 3.0
+      },
+      "request_to_refund": {
+        "n": 326,
+        "mean": 15.76,
+        "median": 16.0,
+        "p90": 21.0
+      }
+    }
+  },
+  "financial": {
+    "refunds_issued": 334,
+    "refunded_cents": 4680130,
+    "refunded_first_attempt_cents": 4602936,
+    "refund_pct_of_delivered_revenue": 0.05819,
+    "avg_refund_cents": 14119.4,
+    "restocking_fees_cents": 49380,
+    "condition_deductions_cents": 174927,
+    "return_shipping_fees_cents": 121448,
+    "refund_exposure_over_paid_cents": 10310,
+    "duplicate_payout_leak_cents": 77194,
+    "disposition_mix": {
+      "QUARANTINE": {
+        "units": 13,
+        "lines": 12,
+        "est_recovery_cents": 0
+      },
+      "REFURBISH": {
+        "units": 243,
+        "lines": 181,
+        "est_recovery_cents": 1193111
+      },
+      "RESTOCK": {
+        "units": 436,
+        "lines": 295,
+        "est_recovery_cents": 2832584
+      },
+      "SCRAP": {
+        "units": 76,
+        "lines": 57,
+        "est_recovery_cents": 11493
+      }
+    },
+    "est_recovery_cents": 4037188,
+    "recovery_to_refund_ratio": 0.8771
+  },
+  "controls": {
+    "duplicate_attempts": 14,
+    "duplicates_blocked": 6,
+    "duplicates_paid": 8,
+    "duplicate_block_rate": 0.4286,
+    "refund_header_reconciliation_rate": 1.0,
+    "restocks_posted": 294,
+    "restocks_before_inspection": 8
+  },
+  "detection": {
+    "QTY_EXCEEDS_PURCHASED": {
+      "labelled": 8,
+      "flagged": 8,
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "REFUND_EXCEEDS_PAID": {
+      "labelled": 8,
+      "flagged": 8,
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "RESTOCK_BEFORE_INSPECTION": {
+      "labelled": 8,
+      "flagged": 8,
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "LATE_NO_OVERRIDE": {
+      "labelled": 8,
+      "flagged": 8,
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "DUPLICATE_REFUND": {
+      "labelled": 8,
+      "flagged": 8,
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "_overall": {
+      "labelled": 40,
+      "flagged": 40,
+      "tp": 40,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "_unlabelled_flags": {}
+  },
+  "decision_accuracy": {
+    "eligibility_decision_accuracy": 0.97995,
+    "eligibility_mismatches": 16,
+    "disposition_accuracy": 1.0,
+    "refund_amount_accuracy": 0.97995,
+    "refund_amount_mismatches": 16
+  }
+}
