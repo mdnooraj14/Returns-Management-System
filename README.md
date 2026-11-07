@@ -1,91 +1,449 @@
-# RMA - Returns Management Synthetic Data, Rules Engine and Dashboard
+# Returns Management System (RMA)
 
-End-to-end synthetic data and tooling for the returns workflow: eligibility, authorization, return shipment, inspection,
-restock/refurbish/quarantine/scrap, refund and duplicate-payout control. Fully synthetic and reproducible from a fixed seed.
+An end-to-end Returns Management System featuring synthetic data generation, return eligibility rules, authorization, shipment tracking, inspection, inventory disposition, refund processing, duplicate-payout prevention and an interactive analytics dashboard.
 
-## Quick start
+The project demonstrates a complete retail returns workflow using reproducible synthetic data, Python business logic, SQL validation and Streamlit visualizations.
+
+All generated records are synthetic and reproducible using a fixed random seed.
+
+## 1. Project Overview
+
+The Returns Management System simulates the lifecycle of a retail product return, from the initial customer request to the final refund and inventory update.
+
+The system covers:
+
+- Return eligibility and policy evaluation.
+- Return authorization and expiration.
+- Return shipment and delivery tracking.
+- Product inspection and condition assessment.
+- Inventory disposition: restock, refurbish, quarantine or scrap.
+- Refund calculation and processing.
+- Duplicate refund prevention.
+- Data validation and anomaly detection.
+- Interactive operational and financial dashboards.
+
+## 2. Technology Stack
+
+| Component | Technology |
+|---|---|
+| Programming language | Python 3.11 |
+| Data processing | Pandas, NumPy |
+| Database and validation | SQLite, SQL |
+| Dashboard | Streamlit |
+| Data visualization | Plotly |
+| Automated testing | Pytest |
+| Data formats | CSV, JSON |
+| Version control | Git and GitHub |
+
+## 3. Architecture Overview
+
+The project is organized into four main components.
+
+### Data Generation
+
+Generates reproducible synthetic datasets for customers, products, orders, return requests, shipments, inspections, refunds and inventory movements.
+
+### Business Rules Engine
+
+Evaluates return eligibility, authorization, refund calculations, inspection outcomes, inventory disposition and duplicate-payout prevention.
+
+### Validation and Anomaly Detection
+
+Uses SQL validation checks and business-rule evaluation to identify data integrity issues and predefined business anomalies.
+
+### Interactive Dashboard
+
+Provides visual insights into return performance, operational decisions, exceptions, refund metrics and data quality through a Streamlit application.
+
+## 4. Installation and Quick Start
+
+### Prerequisites
+
+- Python 3.11
+- Git
+- Windows, macOS or Linux
+
+### Step 1: Clone the repository
 
 ```bash
+git clone https://github.com/mdnooraj14/Returns-Management-System.git
+cd Returns-Management-System
+```
+
+### Step 2: Create a virtual environment
+
+**Windows PowerShell:**
+
+```powershell
+py -3.11 -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+**macOS / Linux:**
+
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
+```
+
+### Step 3: Install dependencies
+
+```bash
+python -m pip install --upgrade pip
 pip install -r requirements.txt
-python -m rma.cli all --scale 1 --out output/full        # generate + export + SQL validation + rules replay + metrics
-python -m rma.cli all --scale 0.1 --out output/starter   # same generator, starter size
-python -m rma.cli reproduce --scale 1 --out output/full  # regenerate twice, compare checksums
+```
+
+### Step 4: Generate the full dataset and execute the pipeline
+
+```bash
+python -m rma.cli all --scale 1 --out output/full
+```
+
+This command generates the synthetic dataset, exports the data, performs SQL validation, replays business rules and produces evaluation reports.
+
+### Step 5: Run automated tests
+
+```bash
 python -m pytest tests -q
+```
+
+### Step 6: Launch the dashboard
+
+```bash
 streamlit run dashboard/app.py
 ```
 
-**Generator command:** `python -m rma.cli generate --seed 20261022 --scale 1.0 --out output/full`
-(`--scale` multiplies every volume; defaults give 30,000 orders, 5,000 return requests, 8,000 return lines).
+Open the local URL displayed in the terminal, usually:
 
-## What is generated (full dataset, seed 20261022)
+http://localhost:8501
 
-| Table | Rows | Table | Rows |
-|---|---|---|---|
+The repository includes a starter dataset at `output/starter/` for exploring the dashboard without first generating the full dataset.
+
+## 5. Command-Line Operations
+
+The CLI supports the following operations:
+
+| Command | Purpose |
+|---|---|
+| `generate` | Generate synthetic datasets |
+| `validate` | Execute SQL and data validation |
+| `detect` | Run anomaly detection and rules evaluation |
+| `reproduce` | Regenerate datasets and compare checksums |
+| `all` | Execute the complete pipeline |
+
+### Generate a dataset
+
+```bash
+python -m rma.cli generate --seed 20261022 --scale 1.0 --out output/full
+```
+
+### Run validation
+
+```bash
+python -m rma.cli validate --out output/full
+```
+
+### Run anomaly detection
+
+```bash
+python -m rma.cli detect --out output/full
+```
+
+### Verify reproducibility
+
+```bash
+python -m rma.cli reproduce --scale 1 --out output/full
+```
+
+### Generate a smaller dataset
+
+```bash
+python -m rma.cli all --scale 0.1 --out output/demo
+```
+
+The `--scale` parameter controls the generated data volume.
+
+## 6. Dataset Overview
+
+The full dataset is generated using seed `20261022`.
+
+| Table | Records | Table | Records |
+|---|---:|---|---:|
 | customer | 12,000 | inspection | 5,473 |
 | product | 600 | inventory_disposition | 5,469 |
 | return_policy | 9 | inventory_movement | 6,027 |
 | orders | 30,000 | refund | 3,315 |
 | order_line | 73,309 | refund_line | 4,619 |
-| return_request | **5,000** | return_authorization | 4,348 |
-| return_line | **8,000** | return_shipment / shipment_line | 4,543 / 6,477 |
-| state_event | 48,094 | | |
+| return_request | 5,000 | return_authorization | 4,348 |
+| return_line | 8,000 | return_shipment | 4,543 |
+| shipment_line | 6,477 | state_event | 48,094 |
 
-Starter (scale 0.1): 3,000 orders, 500 requests, 800 return lines. Output layout per dataset directory:
+The starter dataset uses a scale of `0.1` and contains:
 
+- 3,000 orders.
+- 500 return requests.
+- 800 return lines.
+
+### Generated output structure
+
+Each dataset directory contains:
+
+```text
+output/
+├── starter/
+│   ├── data/
+│   │   └── *.csv
+│   ├── json/
+│   │   └── *.json
+│   ├── sql/
+│   │   ├── schema.sql
+│   │   └── seed.sql
+│   ├── ground_truth/
+│   │   ├── anomalies.csv
+│   │   ├── decisions.csv
+│   │   └── scenario_labels.csv
+│   ├── reports/
+│   │   ├── detections.csv
+│   │   ├── metrics.json
+│   │   ├── metrics.md
+│   │   ├── reproducibility.json
+│   │   ├── reproducibility.md
+│   │   ├── validation_summary.json
+│   │   └── validation_summary.md
+│   └── manifest.json
 ```
-data/*.csv  json/*.json  sql/schema.sql  sql/seed.sql      inputs (no labels)
-ground_truth/anomalies|decisions|scenario_labels (.csv/.json)  kept apart from inputs
-reports/validation_summary|metrics|reproducibility (.md/.json), detections.csv
-manifest.json   seed, command, versions, row counts, SHA-256 of every file, provenance
+
+Ground-truth labels are kept separate from the generated input datasets.
+
+The manifest records the seed, generation command, library versions, row counts, file checksums and provenance information.
+
+## 7. Data Model and Entity Relationships
+
+The database contains 16 tables covering the complete returns workflow.
+
+The model includes the required business entities along with supporting entities and bridge tables.
+
+The main entities include:
+
+- Customer
+- Product
+- Orders
+- Order Line
+- Return Policy
+- Return Request
+- Return Line
+- Return Authorization
+- Return Shipment
+- Shipment Line
+- Inspection
+- Refund
+- Refund Line
+- Inventory Disposition
+- Inventory Movement
+- State Event
+
+The schema and documentation are maintained through `rma/schema.py`.
+
+Supporting documentation:
+
+- [Entity Relationship Diagram](docs/ERD.md)
+- [Data Dictionary](docs/data_dictionary.md)
+- [SQL Schema](sql/schema.sql)
+
+## 8. Business Rules and Processing Logic
+
+### Return Eligibility
+
+Return eligibility is calculated using the effective-dated return policy and the order delivery date.
+
+The configured policy includes:
+
+| Category | Return Window |
+|---|---:|
+| Apparel | 30 days |
+| Footwear | 30 days |
+| Home | 30 days |
+| Electronics | 15 days |
+| Beauty | 14 days |
+| Clearance | Final sale |
+| Perishables | Final sale |
+| Gift Cards | Final sale |
+
+Electronics has a 20-day window from June 1, 2026.
+
+Seller-fault reasons receive an additional 15 days.
+
+Late requests may be approved through the recorded goodwill override:
+
+- GOLD: up to 21 days late.
+- SILVER: up to 10 days late.
+
+### Refund Calculation
+
+Refunds are calculated using the paid share of the returned order line.
+
+The calculation considers:
+
+- Gross line amount.
+- Allocated order discount.
+- Tax.
+- Restocking fees.
+- Product condition deductions.
+- Return shipping fees.
+
+Partial returns use proportional rounding that reconciles across returned quantities.
+
+Condition deductions:
+
+- Grade B: 15%.
+- Grade C: 40%.
+- Grade D: refund denied for customer-fault returns.
+
+Wrong items and suspected fraud are also subject to refund-denial rules for customer-fault returns.
+
+A $7.99 return shipping fee applies, with waivers for GOLD customers and seller-fault returns.
+
+### Inventory Disposition
+
+Inspection results determine the returned product's inventory disposition.
+
+| Inspection Grade | Disposition |
+|---|---|
+| A | Restock |
+| B | Refurbish |
+| C | Refurbish if unit cost is at least $15; otherwise scrap |
+| D | Scrap |
+| W / S | Quarantine |
+
+Only inspected RESTOCK items increase sellable inventory.
+
+### Duplicate Refund Prevention
+
+A refund ledger uses an idempotency key to prevent a second payout for the same transaction.
+
+### Lifecycle Management
+
+State changes are recorded as append-only `state_event` records.
+
+The current status is derived from the latest event.
+
+The snapshot date is October 22, 2026, so some requests are legitimately still in progress.
+
+## 9. Anomaly Detection and Ground Truth
+
+The dataset includes 400 injected anomaly cases across five predefined categories.
+
+| Anomaly Type | Injected Cases |
+|---|---:|
+| Return quantity exceeds purchased quantity | 80 |
+| Refund exceeds paid amount | 80 |
+| Restock before inspection | 80 |
+| Late return without override | 80 |
+| Duplicate refund | 80 |
+| **Total** | **400** |
+
+The ground-truth files contain the expected decisions, scenario labels and anomaly details.
+
+The normal input datasets do not contain explicit labels identifying injected anomalies.
+
+## 10. Validation and Evaluation Results
+
+The full dataset was evaluated using SQL validation, business-rule replay, anomaly detection and reproducibility checks.
+
+### SQL Validation
+
+**359 out of 359 checks passed.**
+
+| Validation Category | Checks |
+|---|---:|
+| Structural checks | 317 |
+| Invariant checks | 36 |
+| Business checks | 6 |
+| **Total** | **359** |
+
+The checks cover primary keys, foreign keys, uniqueness, required values, ID formats, data types, dates, financial reconciliation, lifecycle consistency and business rules.
+
+Ten mutation tests verify that the validator detects deliberately corrupted data.
+
+### Anomaly Detection
+
+The rules replay evaluation reported:
+
+| Metric | Result |
+|---|---:|
+| Precision | 1.0 |
+| Recall | 1.0 |
+| F1 Score | 1.0 |
+| Injected anomalies | 400 |
+| Unlabelled flags | 0 |
+
+**Important evaluation limitation:** The anomaly detector re-applies the same business rules used to generate the synthetic anomalies. These results demonstrate rule consistency on the generated dataset, not generalization to unseen real-world anomalies.
+
+### Reproducibility
+
+The reproducibility evaluation confirmed:
+
+- 40 out of 40 files matched across the tested runs.
+- SHA-256 checksums and row counts were compared.
+- Same-seed runs produced identical outputs.
+- A different seed produced different output.
+
+### Automated Testing
+
+Run the test suite using:
+
+```bash
+python -m pytest tests -q
 ```
 
-## Model and rules
+## 11. Dashboard
 
-16 tables (the 10 required entities plus Product, ReturnPolicy, ShipmentLine and RefundLine bridge tables, InventoryMovement and StateEvent).
-See [docs/data_dictionary.md](docs/data_dictionary.md) (type, required, allowed values, units, uniqueness, validation rule for every field,
-plus PK/FK/cardinality) and [docs/ERD.md](docs/ERD.md). Both, and `sql/schema.sql`, are generated from `rma/schema.py`.
+The Streamlit dashboard provides an interactive view of the generated returns data.
 
-IDs are zero-padded and immutable: `ORD-2026-000001`, `RMA-2026-000001`, `RMAL-RMA-2026-000001-01`, `RTS-2026-000001`, `REF-2026-000001`;
-additional IDs follow the same style (`AUTH-`, `INSP-`, `DISP-`, `MOV-`, `CUST-`, `SKU-`, `ORDL-`, `RTSL-`, `REFL-`).
+Its main sections include:
 
-Policy (`rma/config.py`, effective-dated in `return_policy`): window counted from delivery date, inclusive; +15 days when the reason is seller-fault
-(defective, damaged in transit, wrong item, not as described). Apparel/Footwear/Home 30 d, Electronics 15 d (20 d from 2026-06-01) with 10% restocking
-fee when not sealed, Beauty 14 d and unopened only, Clearance/Perishables/Gift cards final sale. Late requests are approved only under the goodwill
-override rule (GOLD <= 21 days late, SILVER <= 10) and the override is recorded.
+- **Overview:** Key return and refund metrics.
+- **Decisions:** Return eligibility and approval outcomes.
+- **Exceptions:** Detected anomalies and exception analysis.
+- **Trace an RMA:** Detailed lifecycle tracking for an individual return.
+- **Financials:** Refunds, fees and recovery analysis.
+- **Data Quality:** SQL validation, business checks and reproducibility results.
 
-Refund = paid share of the line (gross - allocated order discount + tax, prorated by a telescoping rounding that reconciles exactly across partial returns)
-- restocking fee - condition deduction (grade B 15%, C 40%; grade D, wrong item and suspected fraud are refund-denied for customer-fault returns)
-- a flat $7.99 return shipping fee (waived for GOLD tier and seller-fault). Inspection grade drives disposition (A restock, B refurbish, C refurbish if unit cost >= $15
-else scrap, D scrap, W/S quarantine); only RESTOCK adds sellable stock, and only after inspection. A ledger blocks a second payout for the same idempotency key.
+Launch the dashboard:
 
-All outcomes are computed by `rma/rules.py` from sampled inputs (customer behaviour, inspection condition). State changes are append-only `state_event` rows; the
-`status` columns are derived from the last event. The snapshot date is 2026-10-22, so some requests are legitimately still in flight.
+```bash
+streamlit run dashboard/app.py
+```
 
-## Labelled edge cases and ground truth
+## 12. Assumptions and Limitations
 
-80 injected cases of each required type (return quantity exceeds purchased quantity, refund exceeds paid amount, restock before inspection, return after the window
-without override, duplicate refund), on 400 distinct requests, listed with before/after values in `ground_truth/anomalies.csv`. Nothing in `data/` marks them.
-`ground_truth/decisions.csv` holds the expected rule outcome for every decided return line and `scenario_labels.csv` tags normal, boundary and exception paths
-(last eligible day, first late day, partial approval/quantity/shipment, final sale, late override, damaged goods, exchange, unused label, carrier loss, blocked duplicate attempt).
+- All records are synthetic and are not based on external retail datasets.
+- Reason, condition, price and processing-time distributions use manually configured parameters rather than fitted real-world distributions.
+- The evaluation metrics reflect the predefined synthetic scenarios.
+- Money is represented in USD cents.
+- The system uses one currency.
+- Tax calculation uses a simplified state tax table.
+- Multi-shipment order splitting is not supported.
+- The snapshot date is fixed at October 22, 2026.
 
-## Verification results (full dataset)
+## 13. Data Provenance and Privacy
 
-* **SQL validation** (`sql/validation_checks.sql` + checks generated from the schema, run on a SQLite copy loaded from the exported CSVs): 359/359 pass -
-  317 structural (PK, not null, uniqueness, ID format, FK, enum, type, date format), 36 invariant (date order, arithmetic, discount/tax reconciliation, lifecycle, dispositions, duplicates),
-  6 business checks whose flagged sets equal the ground truth exactly. Ten mutation tests show the validator fails when data is corrupted.
-* **Rules replay** (`python -m rma.cli detect`): precision = recall = 1.0 for all five types (400/400, 0 unlabelled flags). This is rule-consistency, not generalisation:
-  the detector re-applies the same rule engine that generated the data. `reports/metrics.md` also holds approval rates, cycle times, refund/fee/recovery totals and the duplicate block rate.
-* **Reproducibility**: two same-seed runs in separate processes with different `PYTHONHASHSEED`, plus the published dataset - 40/40 files identical (row counts and SHA-256), and a different seed changes the output.
-  Details in `output/full/reports/reproducibility.md`.
-* **Tests**: `python -m pytest tests -q`.
+All generated records are synthetic.
 
-## Provenance and lawful use
+Customer names are selected from built-in lists, and email addresses use the reserved `example.com` domain.
 
-No external or public data is used. Every record is synthetic (names from small built-in lists, emails on the reserved `example.com` domain), so there are no licence, attribution or personal-data concerns.
-`manifest.json` records this together with seed, command, library versions and checksums.
+No external or public customer datasets are used.
 
-## Known limitations
+The manifest records generation metadata, seed, library versions, row counts and file checksums.
 
-* Distributions (reasons, conditions, price, lag) are plausible, hand-set parameters, not fitted to real retail data.
-* IDs for injected rows are final: refund IDs are numbered in payout-date order after injection so injected payouts are not distinguishable by position.
-* Money is USD cents; one currency, a simple state tax table, no multi-shipment order splitting.
+## 14. Project Documentation
+
+Additional project documentation:
+
+- [Entity Relationship Diagram](docs/ERD.md)
+- [Data Dictionary](docs/data_dictionary.md)
+- [AI Usage and Development Disclosure](docs/AI_USAGE.md)
+
+## 15. License and Usage
+
+This project was developed as part of the YottaFlex AI Recruitment Drive candidate project submission.
